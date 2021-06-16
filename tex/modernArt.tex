@@ -1,0 +1,146 @@
+% vim: foldmethod=marker ts=4 sw=4 expandtab: 
+\documentclass[11pt]{standalone}
+
+%|--- Packages and Configs {{{1
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}    
+\usepackage[brazil]{babel}
+
+\usepackage{tikz}
+
+\usepackage{xcolor}
+
+\usepackage{ifthen} %% gives if conditionals when using newcommand
+
+% 1}}}
+
+%|--- Begin Document {{{1
+\begin{document}
+%oi
+\begin{tikzpicture}[scale=2]
+    %\draw[thick,->] (0,0,0) -- (0,0,1) node {z};
+    %\draw[thick,->] (0,0,0) -- (0,1,0) node {y};
+    %\draw[thick,->] (0,0,0) -- (1,0,0) node {x};
+
+    \pgfmathsetmacro{\dtheta}{10}
+    \pgfmathsetmacro{\dr}{0.1}
+
+    %|--- parabola rotate=0 {{{2
+    \begin{scope}
+        \foreach \r in {0,\dr,...,1}{
+            \foreach \theta in {0, \dtheta, ..., 360}{
+                \pgfmathsetmacro{\lighten}{(abs(cos((\theta+90)/2))+1)*50}
+
+
+                \pgfmathsetmacro{\x}{\r*cos(\theta)}
+                \pgfmathsetmacro{\z}{\r*sin(\theta)}
+                \pgfmathsetmacro{\y}{\r^2}
+
+                \pgfmathsetmacro{\xN}{\r*cos(\theta+\dtheta)}
+                \pgfmathsetmacro{\zN}{\r*sin(\theta+\dtheta)}
+
+                \pgfmathsetmacro{\yy}{(\r+\dr)^2}
+
+                \pgfmathsetmacro{\xx}{(\r+\dr)*cos(\theta)}
+                \pgfmathsetmacro{\zz}{(\r+\dr)*sin(\theta)}
+
+                \pgfmathsetmacro{\xxN}{(\r+\dr)*cos(\theta+\dtheta)}
+                \pgfmathsetmacro{\zzN}{(\r+\dr)*sin(\theta+\dtheta)}
+
+                \draw[-,fill,color=black!\lighten] (\x,\y,\z) -- (\xN,\y,\zN) --
+                                         (\xxN,\yy,\zzN) -- (\xx,\yy,\zz) --cycle;
+            }
+        }
+    \end{scope}
+    %END parabola rotate=0 2}}}
+
+    %|--- parabola rotate=90 {{{2
+    \begin{scope}[rotate=90]
+        \foreach \r in {0,\dr,...,1}{
+            \foreach \theta in {0, \dtheta, ..., 360}{
+                \pgfmathsetmacro{\lighten}{(abs(cos((\theta+90)/2))+1)*50}
+
+
+                \pgfmathsetmacro{\x}{\r*cos(\theta)}
+                \pgfmathsetmacro{\z}{\r*sin(\theta)}
+                \pgfmathsetmacro{\y}{\r^2}
+
+                \pgfmathsetmacro{\xN}{\r*cos(\theta+\dtheta)}
+                \pgfmathsetmacro{\zN}{\r*sin(\theta+\dtheta)}
+
+                \pgfmathsetmacro{\yy}{(\r+\dr)^2}
+
+                \pgfmathsetmacro{\xx}{(\r+\dr)*cos(\theta)}
+                \pgfmathsetmacro{\zz}{(\r+\dr)*sin(\theta)}
+
+                \pgfmathsetmacro{\xxN}{(\r+\dr)*cos(\theta+\dtheta)}
+                \pgfmathsetmacro{\zzN}{(\r+\dr)*sin(\theta+\dtheta)}
+
+                \draw[-,fill,color=black!\lighten] (\x,\y,\z) -- (\xN,\y,\zN) --
+                                         (\xxN,\yy,\zzN) -- (\xx,\yy,\zz) --cycle;
+            }
+        }
+    \end{scope}
+    %END parabola rotate=90 2}}}
+
+    %|--- parabola rotate=180 {{{2
+    \begin{scope}[rotate=180]
+        \foreach \r in {0,\dr,...,1}{
+            \foreach \theta in {0, \dtheta, ..., 360}{
+                \pgfmathsetmacro{\lighten}{(abs(cos((\theta+90)/2))+1)*50}
+
+
+                \pgfmathsetmacro{\x}{\r*cos(\theta)}
+                \pgfmathsetmacro{\z}{\r*sin(\theta)}
+                \pgfmathsetmacro{\y}{\r^2}
+
+                \pgfmathsetmacro{\xN}{\r*cos(\theta+\dtheta)}
+                \pgfmathsetmacro{\zN}{\r*sin(\theta+\dtheta)}
+
+                \pgfmathsetmacro{\yy}{(\r+\dr)^2}
+
+                \pgfmathsetmacro{\xx}{(\r+\dr)*cos(\theta)}
+                \pgfmathsetmacro{\zz}{(\r+\dr)*sin(\theta)}
+
+                \pgfmathsetmacro{\xxN}{(\r+\dr)*cos(\theta+\dtheta)}
+                \pgfmathsetmacro{\zzN}{(\r+\dr)*sin(\theta+\dtheta)}
+
+                \draw[-,fill,color=black!\lighten] (\x,\y,\z) -- (\xN,\y,\zN) --
+                                         (\xxN,\yy,\zzN) -- (\xx,\yy,\zz) --cycle;
+            }
+        }
+    \end{scope}
+    %END parabola rotate=180 2}}}
+
+    %|--- parabola rotate=270 {{{2
+    \begin{scope}[rotate=270]
+        \foreach \r in {0,\dr,...,1}{
+            \foreach \theta in {0, \dtheta, ..., 360}{
+                \pgfmathsetmacro{\lighten}{(abs(cos((\theta+90)/2))+1)*50}
+
+
+                \pgfmathsetmacro{\x}{\r*cos(\theta)}
+                \pgfmathsetmacro{\z}{\r*sin(\theta)}
+                \pgfmathsetmacro{\y}{\r^2}
+
+                \pgfmathsetmacro{\xN}{\r*cos(\theta+\dtheta)}
+                \pgfmathsetmacro{\zN}{\r*sin(\theta+\dtheta)}
+
+                \pgfmathsetmacro{\yy}{(\r+\dr)^2}
+
+                \pgfmathsetmacro{\xx}{(\r+\dr)*cos(\theta)}
+                \pgfmathsetmacro{\zz}{(\r+\dr)*sin(\theta)}
+
+                \pgfmathsetmacro{\xxN}{(\r+\dr)*cos(\theta+\dtheta)}
+                \pgfmathsetmacro{\zzN}{(\r+\dr)*sin(\theta+\dtheta)}
+
+                \draw[-,fill,color=black!\lighten] (\x,\y,\z) -- (\xN,\y,\zN) --
+                                         (\xxN,\yy,\zzN) -- (\xx,\yy,\zz) --cycle;
+            }
+        }
+    \end{scope}
+    %END parabola rotate=270 2}}}
+\end{tikzpicture}
+
+\end{document}
+% 1}}}

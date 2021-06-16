@@ -1,0 +1,60 @@
+% vim: foldmethod=marker ts=4 sw=4 expandtab: 
+\documentclass[11pt]{standalone}
+
+%|--- Packages and Configs {{{1
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}    
+\usepackage[brazil]{babel}
+
+\usepackage{tikz}
+
+\usepackage{xcolor}
+
+\usepackage{ifthen} %% gives if conditionals when using newcommand
+
+% 1}}}
+
+%|--- Begin Document {{{1
+\begin{document}
+
+\begin{tikzpicture}[scale=2,rotate=00]
+    \foreach \v in {-1.0,-0.6,...,1.0} {
+        \foreach \u in {0,1,...,360} {
+            %\pgfmathsetmacro{\lighten}{(1.0+abs(cos((\u+90)/2.0))*50}
+
+            \pgfmathsetmacro{\x}{(1+(\v/2.0)*cos(\u/2.0))*cos(\u)}
+            \pgfmathsetmacro{\y}{(1+(\v/2.0)*cos(\u/2.0))*sin(\u)}
+            \pgfmathsetmacro{\z}{(\v/2.0)*sin(\u/2.0)}
+            
+            \pgfmathsetmacro{\uN}{\u+1}
+            \pgfmathsetmacro{\xN}{(1+(\v/2.0)*cos(\uN/2.0))*cos(\uN)}
+            \pgfmathsetmacro{\yN}{(1+(\v/2.0)*cos(\uN/2.0))*sin(\uN)}
+            \pgfmathsetmacro{\zN}{(\v/2.0)*sin(\uN/2.0)}
+
+            \draw[-] (\x,\y,\z) -- (\xN,\yN,\zN);
+            %\draw[fill,color=red] (\x,\y,\z) circle (0.05cm);
+        }
+    }
+    \foreach \u in {0,1,...,360} {
+        \foreach \v in {-1.0,-0.8,...,0.8} {
+            %\pgfmathsetmacro{\lighten}{(1.0+abs(cos((\u+90)/2.0))*50}
+
+            \pgfmathsetmacro{\x}{(1+(\v/2.0)*cos(\u/2.0))*cos(\u)}
+            \pgfmathsetmacro{\y}{(1+(\v/2.0)*cos(\u/2.0))*sin(\u)}
+            \pgfmathsetmacro{\z}{(\v/2.0)*sin(\u/2.0)}
+            
+            \pgfmathsetmacro{\vN}{\v+0.2}
+            \pgfmathsetmacro{\xN}{(1+(\vN/2.0)*cos(\u/2.0))*cos(\u)}
+            \pgfmathsetmacro{\yN}{(1+(\vN/2.0)*cos(\u/2.0))*sin(\u)}
+            \pgfmathsetmacro{\zN}{(\vN/2.0)*sin(\u/2.0)}
+
+            \draw[-] (\x,\y,\z) -- (\xN,\yN,\zN);
+            %\draw[fill,color=red] (\x,\y,\z) circle (0.05cm);
+        }
+    }
+\end{tikzpicture}
+
+\end{document}
+% 1}}}
+
+
