@@ -1,0 +1,171 @@
+% vim: foldmethod=marker: 
+\documentclass[11pt]{standalone}
+
+%|--- Packages and Configs {{{1
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}    
+\usepackage[brazil]{babel}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+
+\usepackage{mathtools}
+
+\usepackage{bbm} %% \mathbbm{1} gives you the identity function symbol 1
+\usepackage{bm} 
+
+%%% allows you to insert many figures indexed by (a), (b), ... on a figure environment
+\usepackage{float} 
+\usepackage[caption = false]{subfig}
+
+\usepackage{tikz}
+\usetikzlibrary{snakes} %% produces curly arrows on tikz
+\usetikzlibrary{matrix} %% for commutative diagrams
+\usetikzlibrary{arrows}
+
+\usetikzlibrary{shadings}
+\definecolor{azulClaro}{RGB}{65,105,225}
+\definecolor{azulEscuro}{RGB}{0,0,51}
+
+\usepackage{ifthen} %% gives if conditionals when using newcommand
+
+%% Garamond fonts 
+\usepackage{ebgaramond}
+\usepackage[ugm]{mathdesign}
+% 1}}}
+
+\begin{document}
+
+\begin{tikzpicture}
+    
+    \tikzstyle pacman=[color=red, ultra thick, fill=yellow]
+    \tikzstyle background=[fill=azulEscuro, opacity=0.95]
+    \tikzstyle whiteBalls=[fill=yellow]
+
+    \draw[background] (2,-4) rectangle (35,10);
+
+    \draw[pacman] (5,4) -- +(45:2) arc (45:315:2) -- cycle;
+    \draw (6,7) node[scale=7] {?};
+
+    \foreach \x in {9,12,...,22}{
+        \draw[whiteBalls] (\x, 4) circle (0.5cm);
+    }
+
+
+    %|--- Toro {{{1
+    \begin{scope}[scale=0.4, shift={(70,17)}]
+        \begin{scope}[xscale=6, yscale=1] %toro
+            \foreach \angle in {90, 89, ..., -90}{
+                
+                \pgfmathsetmacro\x{ cos(\angle)  }
+                \pgfmathsetmacro\y{ 2.3*sin(\angle)  }
+                \pgfmathsetmacro\intensidadeB{ max(90*cos(\angle/0.8), 49)  }
+                \pgfmathsetmacro\intensidadeA{ 100 - max(80*cos(\angle/0.85),10 )  }
+
+                \fill[azulClaro!\intensidadeA!black!\intensidadeB]
+                    (\x,\y) ellipse (0.5cm and 2.1cm);
+
+                \fill[azulClaro!\intensidadeA!black!\intensidadeB]
+                    (-\x,\y) ellipse (0.5cm and 2.1cm);
+            }
+
+            \pgfmathsetmacro\x{ cos(90)  }
+            \pgfmathsetmacro\y{ 2.3*sin(-90)  }
+            \pgfmathsetmacro\intensidadeB{ max(90*cos(-90/0.8), 49)  }
+            \pgfmathsetmacro\intensidadeA{ 100 - max(80*cos(-90/0.85),10 )  }
+                                                
+            \shade[
+                shading=ball,
+                outer color = azulClaro!\intensidadeA!black!\intensidadeB,
+                inner color = azulClaro!20
+            ]
+                (\x,\y) ellipse (0.5 cm and 2.1cm);
+        \end{scope} %Toro
+        
+        \begin{scope}[rotate=-90, shift={(-2,5)}]
+            \draw[<->, ultra thick, line width = 2pt]
+                (2,5) .. controls (6,10) and (14,10) ..  (18,5)
+                node[midway, right, scale=2 ] {$\Phi$};
+        \end{scope}
+
+        \begin{scope}[shift={(-20,-14)}] % [0,2pi]^2
+            \def\mySquare{(14,-4) rectangle (26, 4.5)}
+
+            \draw[very thick, line width = 2pt, fill=gray!70] \mySquare;
+
+            \begin{scope}[even odd rule]
+                \clip \mySquare;
+                \foreach \x in {0,1, ..., 26}{
+                        \draw (\x,-4) -- + (10,10);
+                }
+            \end{scope}
+            
+            \draw[ultra thick] (20,-6) node[scale=1.6] {$\bm{[0,2\pi] \times [0,2\pi]}$};
+
+
+            \draw[->, thick, line width=2pt] (14,-4) -- (20,-4);
+            \draw[->, thick, line width=2pt] (14,4.5) -- (20,4.5);
+            \draw[->, thick, line width=2pt] (14,-4) -- (14,0.2);
+            \draw[->, thick, line width=2pt] (26,-4) -- (26,0.2);
+            
+            %\draw (14,-4)  node[below left ,scale=1.8]  {$\mathbf{a_0}$};
+            %\draw (14,4.5) node[above left ,scale=1.8]  {$\mathbf{a_0}$};
+            %\draw (26,-4)  node[below right,scale=1.8] {$\mathbf{a_0}$};
+            %\draw (26,4.5) node[above right,scale=1.8] {$\mathbf{a_0}$};
+
+            \draw[fill = black]
+                (20,12) circle (0.2cm) node[right,scale=1.8] {$\mathbf{a_0}$};
+        \end{scope}% [0,2pi]^2
+    \end{scope}
+    %|--- END TORO 1}}}
+
+    %%%  diagrama {{{1
+    \begin{scope}[shift={(14,-1)}]
+        \tikzstyle{every node}=[very thick, scale=2.4]
+        \matrix [matrix of math nodes, column sep=3em, row sep=1em]
+        {
+            |(0C)| (0)      & |(C0)|  C_0    & |(C1)| C_1 &
+            |(C2)| C_2      & |(CD)|  \cdots & |(CN)| C_n &
+            |(CN1)| C_{n+1} & |(CDD)| \cdots\\   
+            %
+                            &                 &            &
+                            & |(aa)| \cdots   &            &
+                            & |(bb)| \cdots\\ 
+            %
+            |(0D)| (0)      & |(D0)| D_0      & |(D1)| D_1 &
+            |(D2)| D_2      & |(DD)| \cdots   & |(DN)| D_n & 
+            |(DN1)| D_{n+1} & |(DDD)| \cdots\\   
+        };
+        \tikzstyle{every node} = [midway, above, scale=1.5]
+        \draw[ultra thick, <-] (0C.east) -- node {$\bm{\partial}_0 = 0$} (0C.east -| C0.west);
+        \draw[ultra thick, <-] (C0.east) -- node {$\bm{\partial}_1$} (C0.east -| C1.west);
+        \draw[ultra thick, <-] (C1.east) -- node {$\bm{\partial}_2$} (C1.east -| C2.west);
+        \draw[ultra thick, <-] (C2.east) -- node {$\bm{\partial}_3$} (C2.east -| CD.west);
+        \draw[ultra thick, <-] (CD.east) -- node {$\bm{\partial}_n$} (CD.east -| CN.west);
+        \draw[ultra thick, <-] (CN.east) -- node {$\bm{\partial}_{n+1}$} (CN.east -| CN1.west);
+        \draw[ultra thick, <-] (CN1.east) --  (CN1.east -| CDD.west);
+
+        \draw[ultra thick, <-] (0D.east) -- node {$\bm{\partial}_0 = 0$} (0D.east -| D0.west);
+        \draw[ultra thick, <-] (D0.east) -- node {$\bm{\partial}_1$} (D0.east -| D1.west);
+        \draw[ultra thick, <-] (D1.east) -- node {$\bm{\partial}_2$} (D1.east -| D2.west);
+        \draw[ultra thick, <-] (D2.east) -- node {$\bm{\partial}_3$} (D2.east -| DD.west);
+        \draw[ultra thick, <-] (DD.east) -- node {$\bm{\partial}_n$} (DD.east -| DN.west);
+        \draw[ultra thick, <-] (DN.east) -- node {$\bm{\partial}_{n+1}$} (DN.east -| DN1.west);
+        \draw[ultra thick, <-] (DN1.east) --  (DN1.east -| DDD.west);
+
+        %\drawultra [thick, ->] (0C) -- (0D) node[left] {$f_0$};
+        \draw[ultra thick, ->] (C0) -- (D0) node[left] {$f_0$};
+        \draw[ultra thick, ->] (C1) -- (D1) node[left] {$f_1$};
+        \draw[ultra thick, ->] (C2) -- (D2) node[left] {$f_2$};
+        \draw[ultra thick, ->] (CN) -- (DN) node[left] {$f_n$};
+        \draw[ultra thick, ->] (CN1) -- (DN1) node[left] {$f_{n+1}$};
+    \end{scope}
+    %%% 1}}}
+\end{tikzpicture}
+
+\end{document}
+
+
