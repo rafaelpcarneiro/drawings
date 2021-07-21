@@ -1,0 +1,31 @@
+% vim: foldmethod=marker: 
+\documentclass{standalone}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}    
+\usepackage{tikz}
+
+
+\begin{document}
+
+    \begin{tikzpicture}
+
+        \tikzstyle circulo=[fill=blue]
+
+        \def\r{3}
+
+        \foreach \x in {0,20,...,360} {
+            \foreach \y in {0,20,...,360} {
+                \draw[opacity=0.9] (\x:\r) -- (\y:\r);
+            }
+        }
+
+        \foreach \x in {0,20,...,360} {
+            \foreach \y in {0,20,...,360} {
+                \draw[circulo] (\x:\r) circle (0.1cm);
+            }
+        }
+    \end{tikzpicture}
+\end{document}
+
+
