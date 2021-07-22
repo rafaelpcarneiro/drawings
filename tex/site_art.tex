@@ -28,7 +28,7 @@
 
 \usetikzlibrary{shadings}
 \definecolor{azulClaro}{RGB}{65,105,225}
-\definecolor{azulEscuro}{RGB}{0,0,51}
+\definecolor{azulEscuro}{RGB}{242,242,242}
 
 \usepackage{ifthen} %% gives if conditionals when using newcommand
 
@@ -39,20 +39,23 @@
 
 \begin{document}
 
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=0.53]
     
-    \tikzstyle pacman=[color=red, ultra thick, fill=yellow]
-    \tikzstyle background=[fill=azulEscuro, opacity=0.95]
+    \tikzstyle pacman=[color=red, thick, fill=yellow]
+    \tikzstyle background=[fill=azulEscuro]
     \tikzstyle whiteBalls=[fill=yellow]
 
     \draw[background] (2,-4) rectangle (35,10);
+    
+    \begin{scope}[shift={(0,1)}]
+        \draw[pacman] (5,4) -- +(45:2) arc (45:315:2) -- cycle;
+        \draw (6,7) node[scale=3] {?};
 
-    \draw[pacman] (5,4) -- +(45:2) arc (45:315:2) -- cycle;
-    \draw (6,7) node[scale=7] {?};
-
-    \foreach \x in {9,12,...,22}{
-        \draw[whiteBalls] (\x, 4) circle (0.5cm);
-    }
+        \foreach \x in {9,12,...,22}{
+            \fill[whiteBalls] (\x, 4) circle (0.5cm);
+        }
+        \fill[black] (5,5) circle (0.2cm);
+    \end{scope}
 
 
     %|--- Toro {{{1
@@ -86,15 +89,15 @@
         \end{scope} %Toro
         
         \begin{scope}[rotate=-90, shift={(-2,5)}]
-            \draw[<->, ultra thick, line width = 2pt]
+            \draw[<->, thick, line width = 1pt]
                 (2,5) .. controls (6,10) and (14,10) ..  (18,5)
-                node[midway, right, scale=2 ] {$\Phi$};
+                node[midway, right, scale=1.3 ] {$\Phi$};
         \end{scope}
 
         \begin{scope}[shift={(-20,-14)}] % [0,2pi]^2
             \def\mySquare{(14,-4) rectangle (26, 4.5)}
 
-            \draw[very thick, line width = 2pt, fill=gray!70] \mySquare;
+            \draw[thick, line width = 1pt, fill=gray!70] \mySquare;
 
             \begin{scope}[even odd rule]
                 \clip \mySquare;
@@ -103,13 +106,13 @@
                 }
             \end{scope}
             
-            \draw[ultra thick] (20,-6) node[scale=1.6] {$\bm{[0,2\pi] \times [0,2\pi]}$};
+            \draw[thick] (20,-6) node[scale=1] {$\bm{[0,2\pi] \times [0,2\pi]}$};
 
 
-            \draw[->, thick, line width=2pt] (14,-4) -- (20,-4);
-            \draw[->, thick, line width=2pt] (14,4.5) -- (20,4.5);
-            \draw[->, thick, line width=2pt] (14,-4) -- (14,0.2);
-            \draw[->, thick, line width=2pt] (26,-4) -- (26,0.2);
+            \draw[->, thick, line width=1pt] (14,-4) -- (20,-4);
+            \draw[->, thick, line width=1pt] (14,4.5) -- (20,4.5);
+            \draw[->, thick, line width=1pt] (14,-4) -- (14,0.2);
+            \draw[->, thick, line width=1pt] (26,-4) -- (26,0.2);
             
             %\draw (14,-4)  node[below left ,scale=1.8]  {$\mathbf{a_0}$};
             %\draw (14,4.5) node[above left ,scale=1.8]  {$\mathbf{a_0}$};
@@ -117,53 +120,52 @@
             %\draw (26,4.5) node[above right,scale=1.8] {$\mathbf{a_0}$};
 
             \draw[fill = black]
-                (20,12) circle (0.2cm) node[right,scale=1.8] {$\mathbf{a_0}$};
+                (20,12) circle (0.2cm) node[right,scale=1.2] {$\mathbf{a_0}$};
         \end{scope}% [0,2pi]^2
     \end{scope}
     %|--- END TORO 1}}}
 
-    %%%  diagrama {{{1
-    \begin{scope}[shift={(14,-1)}]
-        \tikzstyle{every node}=[very thick, scale=2.3]
-        \matrix [matrix of math nodes, column sep=3em, row sep=1em]
-        {
-            |(0C)| (0)      & |(C0)|  C_0    & |(C1)| C_1 &
-            |(C2)| C_2      & |(CD)|  \cdots & |(CN)| C_n &
-            |(CN1)| C_{n+1} & |(CDD)| \cdots\\   
-            %
-                            &                 &            &
-                            & |(aa)| \cdots   &            &
-                            & |(bb)| \cdots\\ 
-            %
-            |(0D)| (0)      & |(D0)| D_0      & |(D1)| D_1 &
-            |(D2)| D_2      & |(DD)| \cdots   & |(DN)| D_n & 
-            |(DN1)| D_{n+1} & |(DDD)| \cdots\\   
-        };
-        \tikzstyle{every node} = [midway, above, scale=1.5]
-        \draw[ultra thick, <-] (0C.east) -- node {$\bm{\partial}_0 = 0$} (0C.east -| C0.west);
-        \draw[ultra thick, <-] (C0.east) -- node {$\bm{\partial}_1$} (C0.east -| C1.west);
-        \draw[ultra thick, <-] (C1.east) -- node {$\bm{\partial}_2$} (C1.east -| C2.west);
-        \draw[ultra thick, <-] (C2.east) -- node {$\bm{\partial}_3$} (C2.east -| CD.west);
-        \draw[ultra thick, <-] (CD.east) -- node {$\bm{\partial}_n$} (CD.east -| CN.west);
-        \draw[ultra thick, <-] (CN.east) -- node {$\bm{\partial}_{n+1}$} (CN.east -| CN1.west);
-        \draw[ultra thick, <-] (CN1.east) --  (CN1.east -| CDD.west);
 
-        \draw[ultra thick, <-] (0D.east) -- node {$\bm{\partial}_0 = 0$} (0D.east -| D0.west);
-        \draw[ultra thick, <-] (D0.east) -- node {$\bm{\partial}_1$} (D0.east -| D1.west);
-        \draw[ultra thick, <-] (D1.east) -- node {$\bm{\partial}_2$} (D1.east -| D2.west);
-        \draw[ultra thick, <-] (D2.east) -- node {$\bm{\partial}_3$} (D2.east -| DD.west);
-        \draw[ultra thick, <-] (DD.east) -- node {$\bm{\partial}_n$} (DD.east -| DN.west);
-        \draw[ultra thick, <-] (DN.east) -- node {$\bm{\partial}_{n+1}$} (DN.east -| DN1.west);
-        \draw[ultra thick, <-] (DN1.east) --  (DN1.east -| DDD.west);
+   %%%  diagrama {{{1
+   \begin{scope}[shift={(15,-1)}]
+       \tikzstyle{every node}=[very thick, scale=0.9]
+       \matrix [matrix of math nodes, column sep=3em, row sep=1em]
+       {
+           |(0C)| (0)      & |(C0)|  C_0    & |(C1)| C_1 &
+           |(C2)| C_2      & |(CD)|  \cdots & |(CN)| C_n &
+           |(CDD)| \cdots\\   
+           %
+                           &                 &            &
+                           & |(aa)| \cdots   &            &
+                           & |(bb)| \cdots\\ 
+           %
+           |(0D)| (0)      & |(D0)| D_0      & |(D1)| D_1 &
+           |(D2)| D_2      & |(DD)| \cdots   & |(DN)| D_n & 
+           |(DDD)| \cdots\\   
+       };
+       \tikzstyle{every node} = [midway, above, scale=0.7]
+       \draw[thick, <-] (0C.east) -- node {$\bm{\partial}_0 = 0$} (0C.east -| C0.west);
+       \draw[thick, <-] (C0.east) -- node {$\bm{\partial}_1$} (C0.east -| C1.west);
+       \draw[thick, <-] (C1.east) -- node {$\bm{\partial}_2$} (C1.east -| C2.west);
+       \draw[thick, <-] (C2.east) -- node {$\bm{\partial}_3$} (C2.east -| CD.west);
+       \draw[thick, <-] (CD.east) -- node {$\bm{\partial}_n$} (CD.east -| CN.west);
+       \draw[thick, <-] (CN.east) -- node {$\bm{\partial}_{n+1}$} (CN.east -| CDD.west);
 
-        %\drawultra [thick, ->] (0C) -- (0D) node[left] {$f_0$};
-        \draw[ultra thick, ->] (C0) -- (D0) node[left] {$f_0$};
-        \draw[ultra thick, ->] (C1) -- (D1) node[left] {$f_1$};
-        \draw[ultra thick, ->] (C2) -- (D2) node[left] {$f_2$};
-        \draw[ultra thick, ->] (CN) -- (DN) node[left] {$f_n$};
-        \draw[ultra thick, ->] (CN1) -- (DN1) node[left] {$f_{n+1}$};
-    \end{scope}
-    %%% 1}}}
+       \draw[thick, <-] (0D.east) -- node {$\bm{\partial}_0 = 0$} (0D.east -| D0.west);
+       \draw[thick, <-] (D0.east) -- node {$\bm{\partial}_1$} (D0.east -| D1.west);
+       \draw[thick, <-] (D1.east) -- node {$\bm{\partial}_2$} (D1.east -| D2.west);
+       \draw[thick, <-] (D2.east) -- node {$\bm{\partial}_3$} (D2.east -| DD.west);
+       \draw[thick, <-] (DD.east) -- node {$\bm{\partial}_n$} (DD.east -| DN.west);
+       \draw[thick, <-] (DN.east) -- node {$\bm{\partial}_{n+1}$} (DN.east -| DDD.west);
+
+       %\drawultra [thick, ->] (0C) -- (0D) node[left] {$f_0$};
+       \draw[thick, ->] (C0) -- (D0) node[left] {$f_0$};
+       \draw[thick, ->] (C1) -- (D1) node[left] {$f_1$};
+       \draw[thick, ->] (C2) -- (D2) node[left] {$f_2$};
+       \draw[thick, ->] (CN) -- (DN) node[left] {$f_n$};
+   \end{scope}
+   %%% 1}}}
+
 \end{tikzpicture}
 
 \end{document}
