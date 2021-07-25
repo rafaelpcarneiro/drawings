@@ -6,8 +6,12 @@
 \usetikzlibrary{snakes} %% produces curly arrows on tikz
 \usetikzlibrary{matrix} %% for commutative diagrams
 \usetikzlibrary{arrows}
+
+\usepackage{xcolor}
+\definecolor{azul}{rgb}{0,0,102}
 \begin{document}
-    \begin{tikzpicture}
+    \begin{tikzpicture}[ every path/.style={color=black, ultra thick}]
+       
 		 \draw (0, 0) -- +(-60:8)
                                -- +(-120:8) --cycle;
 		 \draw (-4, -6.92820323027551) -- +(-60:8)
