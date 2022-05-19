@@ -204,12 +204,12 @@ I have only added the smoke comming from the hot coffee
 ## Generating an animation
 <!-- {{{1 -->
 Suppose that you have a sequence of images ordered. Then
-the with the help of the program <strong>convert</strong> and 
+with the help of the program <strong>convert</strong> and 
 issuing 
 ```
 convert -delay 20 -loop 0 *jpg animation.gif
 ```
-we can create an animation in <em>gif</em>
+we can create a <em>gif</em> animation.
 
 <ul style='list-style:none'>
     <li>
