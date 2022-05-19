@@ -1,8 +1,8 @@
-# vim: foldmethod=marker:
+<> vim: foldmethod=marker:
 # Drawings produced with LaTeX + Tikz
 
 ## Cantor Set 
-#{{{1
+<>{{{1
 <ul style='list-style:none'>
     <li>
       <a href="tex/cantorSet.pl">
@@ -25,7 +25,7 @@
         width='300px'
     />
 </div>
-#1}}}
+<>1}}}
 
 ## Coffee mug
 #{{{1
