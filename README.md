@@ -2,10 +2,17 @@
 
 ## Cantor Set 
 <div align='center'>
-    Cantor Set. Files used to produce it
-    * [cantorSet.pl](tex/cantorSet.pl). This PERL script 
-      will produce a tex file that after compiling it produces the
-      desired Image
+    Cantor Set. 
+    <ul>
+        <li>
+          <a href="tex/cantorSet.pl">
+            cantorSet.pl.
+          </a>
+          This PERL script 
+          will produce a tex file that after compiling it produces the
+          desired Image
+        </li>
+    </ul>
     <img src='pictures_png/cantorSet.png'
          width='300px'
     />
