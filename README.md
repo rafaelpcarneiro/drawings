@@ -2,7 +2,7 @@
 
 ## Cantor Set 
 <div align='center'>
-    Cantor Set. 
+    <h2>Cantor Set. </h2>
     <ul>
         <li>
           <a href="tex/cantorSet.pl">
