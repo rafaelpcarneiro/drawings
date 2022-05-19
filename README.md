@@ -1,4 +1,4 @@
-<> vim: foldmethod=marker:
+<!-- vim: foldmethod=marker: -->
 # Drawings produced with LaTeX + Tikz
 
 ## Cantor Set 
