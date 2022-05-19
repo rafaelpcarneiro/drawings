@@ -1,8 +1,10 @@
-<!-- vim: foldmethod=marker: -->
+<!-- vim: foldmethod=marker: 
+-->
+
 # Drawings produced with LaTeX + Tikz
 
 ## Cantor Set 
-<>{{{1
+<!-- {{{1 -->
 <ul style='list-style:none'>
     <li>
       <a href="tex/cantorSet.pl">
@@ -25,10 +27,10 @@
         width='300px'
     />
 </div>
-<>1}}}
+<!--1}}} -->
 
 ## Coffee mug
-#{{{1
+<!-- {{{1 -->
 I could only draw a coffee mug on <em>LaTex</em> thanks to this 
 [help](https://tex.stackexchange.com/questions/145223/how-to-draw-a-coffee-cup).
 I have only added the smoke comming from the hot coffee
@@ -46,10 +48,10 @@ I have only added the smoke comming from the hot coffee
         width='300px'
     />
 </div>
-#1}}}
+<!-- 1}}} -->
 
 ## Fractal 
-#{{{1
+<!-- {{{1 -->
 <ul style='list-style:none'>
     <li>
       <a href="tex/fractal.pl">
@@ -70,10 +72,10 @@ I have only added the smoke comming from the hot coffee
         width='300px'
     />
 </div>
-#1}}}
+<!-- 1}}} -->
 
 ## looping_and_saving_coordinates
-#{{{1
+<!-- {{{1 -->
 <ul style='list-style:none'>
     <li>
       <a href="tex/looping_and_saving_coordinates.tex">
@@ -89,10 +91,10 @@ I have only added the smoke comming from the hot coffee
         width='300px'
     />
 </div>
-#1}}}
+<!-- 1}}} -->
 
 ## An attempt to draw the Mobius strip
-#{{{1
+<!-- {{{1 -->
 <ul style='list-style:none'>
     <li>
       <a href="tex/mobius_strip.tex">
@@ -107,10 +109,10 @@ I have only added the smoke comming from the hot coffee
         width='300px'
     />
 </div>
-#1}}}
+<!-- 1}}} -->
 
 ## <em>pgfmathsetmacro</em>, <em>foreach</em> and <em>opacity</em>
-#{{{1
+<!-- {{{1 -->
 <ul style='list-style:none'>
     <li>
       <a href="tex/modernArt.tex">
@@ -125,10 +127,10 @@ I have only added the smoke comming from the hot coffee
         width='300px'
     />
 </div>
-#1}}}
+<!-- 1}}} -->
 
 ## A simple parabola
-#{{{1
+<!-- {{{1 -->
 <ul style='list-style:none'>
     <li>
       <a href="tex/parabola3D.tex">
@@ -143,10 +145,10 @@ I have only added the smoke comming from the hot coffee
         width='300px'
     />
 </div>
-#1}}}
+<!-- 1}}} -->
 
 ## The image that I use at my website 
-#{{{1
+<!-- {{{1 -->
 <ul style='list-style:none'>
     <li>
       <a href="tex/site_art.tex">
@@ -161,10 +163,10 @@ I have only added the smoke comming from the hot coffee
         width='300px'
     />
 </div>
-#1}}}
+<!-- 1}}} -->
 
 ## Triangles (even odd rule - fill)
-#{{{1
+<!-- {{{1 -->
 <ul style='list-style:none'>
     <li>
       <a href="tex/triangles.tex">
@@ -179,10 +181,10 @@ I have only added the smoke comming from the hot coffee
         width='300px'
     />
 </div>
-#1}}}
+<!-- 1}}} -->
 
 ## A simple figure
-#{{{1
+<!-- {{{1 -->
 <ul style='list-style:none'>
     <li>
       <a href="tex/weird01.tex">
@@ -197,10 +199,10 @@ I have only added the smoke comming from the hot coffee
         width='300px'
     />
 </div>
-#1}}}
+<!-- 1}}} -->
 
 ## Generating an animation
-#{{{1
+<!-- {{{1 -->
 Suppose that you have a sequence of images ordered. Then
 the with the help of the program <strong>convert</strong> and 
 issuing 
@@ -224,4 +226,4 @@ we can create an animation in <em>gif</em>
         width='300px'
     />
 </div>
-#1}}}
+<!-- 1}}} -->
