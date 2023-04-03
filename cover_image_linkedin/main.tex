@@ -1,0 +1,136 @@
+\documentclass{article}
+
+\usepackage[showframe]{geometry}
+
+\geometry{
+    paperwidth=1128px,
+    paperheight=191px,
+    margin=0cm
+}
+
+\usepackage{estilo}
+\usepackage{pagecolor}
+
+\pgfplotsset{compat=1.17}
+
+\usetikzlibrary{backgrounds}
+
+\begin{document}
+    \pagecolor{black!60}
+
+    \begin{tikzpicture}
+
+      \draw[opacity=0.8, color=white] (150px,40px) node[scale=4,rotate=15] {
+        $\mathbb{P}[B] = \int_{\Omega} (f_{h} * g) \Id_{B} \mathrm{d} \mathbb{P} $
+      };
+
+      \draw[opacity=0.6, color=white] (80px,110px) node[scale=2,rotate=0] {
+        $\hat{h} = \argmin_{ h \in \mathcal{H}} \left\{
+            L(h) = \sum_{i \in [1,N]} \frac{l(h, w_{i})}{N}
+        \right\}$
+      };
+
+      \draw[opacity=0.7, color=white] (400px,00px) node[scale=4,rotate=0] {
+        $e^{X} = \lim_{N \to \infty}\sum_{i=0}^{N} \frac{X^{i}}{i\text{\tiny !}}$
+      };
+
+      \draw[opacity=0.7, color=white] (500px,50px) node[scale=2,rotate=0] {
+        $M_{n \times n}(\R) \ni X, \| X \| <1$
+      };
+
+
+      \draw[opacity=0.6, color=white] (870px,40px) node[scale=3,rotate=0] {
+        $U = \bigcup_{r \in I} U_{r}$
+      };
+
+      \draw[opacity=0.6, color=white] (800px,120px) node[scale=1,rotate=0] {
+        $\int_{w \in B[0,1] \subseteq \R^{2}} (w_{x}^{2} + w_{y}^{2}) \; \mathrm{d}x \mathrm{d}y$
+      };
+
+      \draw[opacity=0.6, color=white] (20px,80px) node[scale=2,rotate=0] {
+        $(\R^{d})^{\ast} \ni h_{w}(x) = \langle w, x \rangle$
+      };
+
+      \draw[opacity=0.6, color=white] (0px,50px) node[scale=1.4,rotate=0] {
+        $ \sum_{i=1}^{N} \alpha_{i} \sgn \circ h_{w_{i}}, \sum_{i=1}^{N} \alpha_{1} = 1 $
+      };
+
+
+      \begin{scope}[
+        scale=0.35,
+        shift={(400px,-60px)},
+        rotate=200,
+      ]
+        \draw [thick, color=white, opacity=0.5, dashed]  plot[smooth, tension=.7] coordinates {
+            (-4,2.5)
+            (-3,3)
+            (-2,2.8)
+            (-0.8,2.5)
+            (-0.5,1.5)
+            (0.5,0)
+            (0,-2)
+            (-1.5,-2.5)
+            (-4,-2)
+            (-3.5,-0.5)
+            (-5,1)
+            (-4,2.5)
+        };
+
+       \node at (-2,0.5)[shape=circle,draw,inner sep=5pt, fill=white!20, opacity=0.2] {$x_{0}$};
+
+      \end{scope}
+      \draw[opacity=0.6, color=white] (70px,-30px) node[scale=1.4,rotate=0] {
+        $ h_{w}^{-1}(\{x_{0}\}) \subseteq \mathcal{X} \times \mathcal{Y} \to \mathcal{V}_{X} $
+      };
+
+      \draw[opacity=0.8, color=white] (-80px,0px) node[scale=2,rotate=90] {
+        $ \otimes_{i=1}^{N} \mathcal{H}_{\alpha_{i}}$
+      };
+
+
+      \begin{scope}[shift={(+190px,-60px)}]
+        \draw[opacity=0.9, color=white, dotted, thick] (600px,60px) ellipse (200px and 50px);
+        \draw[opacity=0.9, color=white, dotted, thick] (550px,60px) ellipse (150px and 45px);
+        \draw[opacity=0.9, color=white, dotted, thick] (530px,60px) ellipse (130px and 41px);
+        \draw[opacity=0.9, color=white, dotted, thick] (500px,60px) ellipse (100px and 38px);
+        \draw[opacity=0.9, color=white, dotted, thick] (470px,60px) ellipse (70px and 34px);
+        \draw[opacity=0.9, color=white, dotted, thick] (450px,60px) ellipse (50px and 28px);
+        \draw[opacity=0.9, color=white, dotted, thick] (430px,60px) ellipse (30px and 20px);
+        \draw[opacity=0.9, color=white, dotted, thick] (418px,60px) ellipse (18px and 15px);
+      \end{scope}
+
+      \begin{scope}[shift={(470px,104px)}]
+        \draw[thin,color=gray] (-4,-1.1) grid (9.45,1);
+
+        %\draw[->] (-0.01,0) -- (0.4,0) node[right] {$x$};
+        %\draw[->] (0,-1.2) -- (0,1) node[above] {$f(x)$};
+
+        % \x r means to convert '\x' from degrees to _r_adians:
+        \draw[
+            color=white,
+            domain=-3.15:9.45,
+            samples=100,
+            thick,
+            opacity=0.3
+        ]   plot (\x,{sin(\x r)})    node[right] {$f(x) = \sin x$};
+      \end{scope}
+
+      \begin{scope}[shift={(900px, 95px)}]
+        \draw[white, opacity=0.6, dashed] (-1,1) .. controls (0,-1.5) and (2,-1.5) .. (3,1);
+
+        \draw[white, opacity=0.6, dashed] (1,0) ellipse (1.45 and 0.2);
+        \draw[white, opacity=0.6, dashed] (1,1) ellipse (1.95 and 0.2);
+
+        \draw[->, thick, white, opacity=0.4] (0,-0.1)  .. controls (-1.2, 0) and (-5.2, 0) .. (-6.2,-3);
+      \end{scope}
+
+      \draw[opacity=0.5, color=white] (330px,35px) node[scale=1.5,rotate=0] {
+        $ \overline{
+            \left\{ \sum_{B \in \mathcal{S}} \alpha_{B} \Id_{B} \right\}
+          } \xrightarrow{I} \overline{\R}
+        $
+      };
+
+    \end{tikzpicture}
+
+\end{document}
